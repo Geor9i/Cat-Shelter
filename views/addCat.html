@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../content/styles/site.css">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <script src="/views/util.js" defer></script>
+    <script src="/views/addCat.js" defer></script>
     <title>Cat Shelter</title>
 </head>
 
@@ -32,13 +34,11 @@
             <input name="upload" type="file" id="image">
             <label for="group">Breed</label>
             <select name="breed" id="group">
-                <option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
+				{{breeds}}
             </select>
             <button type="submit">Add Cat</button>
         </form>
     </main>
-</body>
+</body> 
 
 </html>

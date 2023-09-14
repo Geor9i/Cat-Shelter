@@ -19,11 +19,14 @@ function getContentType(path) {
 module.exports = (req, res) => {
     const pathname = url.parse(req.url).pathname;
     const fileName = pathname?.split('/').filter(x => x.length > 0)[0];
-
-    const staticFileNames = ['content']
-
-    if (staticFileNames.includes(fileName) && req.method === 'GET') {
+    const extension = pathname.split('.').pop();
+    const staticFileDirectories = ['content'];
+    if ((staticFileDirectories.includes(fileName) || extension === 'js')
+    && req.method === 'GET') {
         let readPath = path.normalize(path.join(processDirectory, `${pathname}`))
+        if (extension === 'js') {
+            // readPath = path.normalize(path.join(processDirectory, '/views'))
+        }
         fs.readFile(readPath, (err, data) => {
             if (err) {
                 console.log(err);
