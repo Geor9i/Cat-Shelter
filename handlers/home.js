@@ -38,7 +38,7 @@ function makeCatTemplates(cats) {
     for (let cat of cats) {
         let template = `
             <li>
-            <img src="${cat.imageUrl}" alt="Black Cat">
+            <img src="${cat.imageUrl ? cat.imageUrl : cat.imagePath}" alt="Black Cat">
             <h3${cat.title}></h3>
             <p><span>Breed: </span>${cat.breed}</p>
             <p><span>Description: </span>${cat.description}</p>

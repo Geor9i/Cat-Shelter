@@ -78,9 +78,24 @@ const util = new Util();
                     return;
             } else {
                 let upload = files.upload[0];
-                if (util.checkFile(upload)) {
-                    console.log('here');
+                
+                if (!util.checkFile(upload)) {
+                    fs.unlink(upload.filepath, (err) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('File Deleted!');
+                    })
+                    res.writeHead(415 , { 'Content-Type': 'text/plain' });
+                    res.end('Forbidden File Type!');
+                    return;
                 }
+                util.addCat(fields, upload.newFilename);
+                res.writeHead(302, {
+                    'Location': '/',
+                    });
+                    res.end();
+                    return;
             }
 
         })
